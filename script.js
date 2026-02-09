@@ -108,15 +108,6 @@ document.querySelectorAll('[data-animation]').forEach(el => {
     observer.observe(el);
 });
 
-// Add staggered animation delays to product cards
-const productCards = document.querySelectorAll('.product-detailed-card, .spice-detailed-card');
-productCards.forEach((card, index) => {
-    const delay = (index * 0.12) + 's';
-    card.style.setProperty('animation-delay', delay);
-    card.style.opacity = '0';
-    card.style.animation = 'fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-});
-
 // ===== Contact Form Handling =====
 const contactForm = document.getElementById('contactForm');
 const formMessage = document.getElementById('formMessage');
