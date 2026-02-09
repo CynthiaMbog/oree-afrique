@@ -7,8 +7,9 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navMenu.classList.toggle('active');
         
         // Animate hamburger icon
@@ -34,6 +35,17 @@ if (menuToggle) {
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
         });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.navbar')) {
+            navMenu.classList.remove('active');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
     });
 }
 
